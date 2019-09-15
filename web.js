@@ -24,11 +24,29 @@ app.get('/', function(request, response) {
 });
 
 app.get('/resolve.:format?', function(request, response) {
-  console.log('format = ' + (request.params.format || 'html'));
-  if (request.query.hops === 'true') {
+  const format = request.params.format || 'html';
+  const hops = request.query.hops === 'true';
+  const origin = request.get('Origin');
+  console.log(
+    'format = ' + format + ', hops = ' + hops + ', origin = ' + origin,
+  );
+
+  if (format === 'json' || format === 'xml') {
+    if (origin) {
+      const originURL = new URL(origin);
+      if (originURL.hostname.match(/\.catchen.app$/)) {
+        response.set({
+          'Access-Control-Allow-Origin': originURL.origin,
+          'Timing-Allow-Origin': originURL.origin,
+        });
+      }
+    }
+  }
+
+  if (hops) {
     traceurl.traceHops(request.query.url).addCallback(function(results) {
       var json = { urls: results };
-      switch (request.params.format) {
+      switch (format) {
         case 'json':
           response.contentType('application/json');
           response.render('resolve.json.mustache', {
@@ -54,7 +72,7 @@ app.get('/resolve.:format?', function(request, response) {
   } else {
     traceurl.trace(request.query.url).addCallback(function(result) {
       var json = { url: result || '' };
-      switch (request.params.format) {
+      switch (format) {
         case 'json':
           response.contentType('application/json');
           response.render('resolve.json.mustache', {
