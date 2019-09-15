@@ -1,8 +1,9 @@
 {
   "name": "traceurl-web",
   "description": "A JavaScript utility to trace the original url of a shortened url.",
-  "homepage": "https://github.com/CatChen/traceurl",
-  "version": "0.3.2-web",
+  "license": "MIT",
+  "homepage": "https://github.com/CatChen/traceurl-api",
+  "version": "1.0.0",
   "author": {
     "name": "Cat Chen",
     "email": "catchen@catchen.me",
@@ -18,10 +19,8 @@
     "newrelic": "^5.11.0",
     "serve-static": "^1.14.1"
   },
-  "repositories": [
-    {
-      "type": "git",
-      "url": "git@github.com:CatChen/traceurl.git"
-    }
-  ]
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:CatChen/traceurl-api.git"
+  }
 }
