@@ -1,6 +1,6 @@
 # Introduction
 
-This is the web server for [traceurl](https://github.com/CatChen/traceurl).
+This is the API server for [traceurl](https://github.com/CatChen/traceurl).
 
 # Usage
 
@@ -8,7 +8,7 @@ This is the web server for [traceurl](https://github.com/CatChen/traceurl).
 
 You can start the web server by using the web.js:
 
-    node web.js
+    node main.js
 
 ## As Heroku App
 
