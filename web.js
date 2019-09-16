@@ -5,8 +5,6 @@ const path = require('path');
 
 const traceurl = require('@catchen/traceurl');
 
-const viewsDirectory = path.join(__dirname, 'views');
-
 var app = express();
 
 app.use(require('morgan')('combined'));
