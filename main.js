@@ -1,3 +1,4 @@
+require('dotenv').config();
 require('newrelic');
 
 const express = require('express');
@@ -29,7 +30,12 @@ app.get('/resolve.:format?', function(request, response) {
     'format = ' + format + ', hops = ' + hops + ', origin = ' + origin,
   );
 
-  if (format === 'json' || format === 'xml') {
+  if (process.env.NODE_ENV === 'development') {
+    response.set({
+      'Access-Control-Allow-Origin': '*',
+      'Timing-Allow-Origin': '*',
+    });
+  } else if (format === 'json' || format === 'xml') {
     if (origin) {
       const originURL = new URL(origin);
       if (originURL.hostname.match(/\.catchen.app$/)) {
