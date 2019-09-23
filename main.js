@@ -5,8 +5,10 @@ if (process.env.NODE_ENV === 'production') {
 
 const express = require('express');
 const path = require('path');
-
 const traceurl = require('@catchen/traceurl');
+
+const CATCHEN_APP_HOSTNAME_PATTERN = /\.catchen\.app$/;
+const NETLIFY_DEPLOY_PREVIEW_HOSTNAME_PATTERN = /deploy-preview-\d+--traceurl\.netlify\.com$/;
 
 var app = express();
 
@@ -40,7 +42,10 @@ app.get('/resolve.:format?', function(request, response) {
   } else if (format === 'json' || format === 'xml') {
     if (origin) {
       const originURL = new URL(origin);
-      if (originURL.hostname.match(/\.catchen.app$/)) {
+      if (
+        originURL.hostname.match(CATCHEN_APP_HOSTNAME_PATTERN) ||
+        originURL.hostname.match(NETLIFY_DEPLOY_PREVIEW_HOSTNAME_PATTERN)
+      ) {
         response.set({
           'Access-Control-Allow-Origin': originURL.origin,
           'Timing-Allow-Origin': originURL.origin,
