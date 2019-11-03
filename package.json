@@ -3,7 +3,7 @@
   "description": "A JavaScript utility to trace the original url of a shortened url.",
   "license": "MIT",
   "homepage": "https://github.com/CatChen/traceurl-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Cat Chen",
     "email": "catchen@catchen.me",
