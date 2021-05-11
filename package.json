@@ -17,7 +17,7 @@
   "dependencies": {
     "@catchen/traceurl": "^0.3.4",
     "body-parser": "^1.19.0",
-    "dotenv": "^9.0.1",
+    "dotenv": "^9.0.2",
     "errorhandler": "^1.5.1",
     "express": "^4.16.0",
     "morgan": "^1.10.0",
@@ -26,7 +26,7 @@
     "serve-static": "^1.14.1"
   },
   "devDependencies": {
-    "dotenv": "^9.0.1",
+    "dotenv": "^9.0.2",
     "prettier": "^2.3.0"
   },
   "repository": {
